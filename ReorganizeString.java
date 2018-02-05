@@ -1,3 +1,31 @@
+// Given a string S, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.
+
+// If possible, output any possible result.  If not possible, return the empty string.
+
+// Example 1:
+
+// Input: S = "aab"
+// Output: "aba"
+// Example 2:
+
+// Input: S = "aaab"
+// Output: ""
+
+
+//Always check the frequence of every remaining characters and put the largest in the fisrt. The best structure is PrioryQueue.
+//First print the largerst, let's say A, pop it. Minus one to A frequence. Let A become previous.
+//Second, print the largest in the remaining, for example B. [Tips, A is not in the queue now.] If A's count is larger 
+//than zero, offer A to Priory queue[previous is empty now].  Minus one to B frequence. Let B become previous.
+//Continue do this, if the queue is empty while the previous frequence is large than 0. Then there is no result.
+//Choose the right structure is the key to good programming.
+
+
+
+
+
+
+
+
 package Week68;
 
 import com.sun.corba.se.spi.monitoring.StringMonitoredAttributeBase;
