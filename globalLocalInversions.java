@@ -48,13 +48,6 @@
 
 
 
-
-
-
-
-
-
-
 package Week69;
 
 import java.util.Scanner;
