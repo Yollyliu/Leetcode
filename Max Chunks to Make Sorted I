@@ -1,0 +1,202 @@
+Max Chunks to Make Sorted
+Given an array arr that is a permutation of [0, 1, ..., arr.length - 1], we split the array into some number of "chunks" (partitions), and individually sort each chunk.  After concatenating them, the result equals the sorted array.
+
+What is the most number of chunks we could have made?
+
+Example 1:
+
+Input: arr = [4,3,2,1,0]
+Output: 1
+Explanation:
+Splitting into two or more chunks will not return the required result.
+For example, splitting into [4, 3], [2, 1, 0] will result in [3, 4, 0, 1, 2], which isn't sorted.
+Example 2:
+
+Input: arr = [1,0,2,3,4]
+Output: 4
+Explanation:
+We can split into two chunks, such as [1, 0], [2, 3, 4].
+However, splitting into [1, 0], [2], [3], [4] is the highest number of chunks possible.
+Note:
+
+arr will have length in range [1, 10].
+arr[i] will be a permutation of [0, 1, ..., arr.length - 1].
+
+
+
+Tips: when use head, there is no need to find the small one, if and only if max if from 0....k, and  max=k, we can divide it.
+When we use tail, there is no need to find the larger one, as min from k....arr.leng-1, and min = k.
+In short, the first way is easy.
+
+
+
+
+
+
+
+
+
+package array;
+
+
+
+import java.util.Scanner;
+
+public class MaxChunksToMakeSorted {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        int m= scanner.nextInt();
+        int [] A=new int[m+1];
+
+        for(int i=0;i<m+1;i++){
+            A[i]=scanner.nextInt();
+            //scanner.nextLine();
+        }
+
+        int n=new MaxChunksToMakeSorted().head(A);
+        System.out.println(n);
+    }
+
+    public int head(int[] arr) {
+        if (arr.length == 1) {
+            return 1;
+        }
+        int head = 0;
+        int num = 0;
+        while (head < arr.length) {
+            if (head == arr[head]) {
+                num++;
+                head++;
+            } else {
+                int max = -1, min = 99;
+                int hvalue = arr[head];
+                int previous = hvalue;
+                while (!((max == hvalue) && (min == head))) {
+
+                    if (previous != hvalue) {
+                        hvalue = previous;
+                    }
+
+                    for (int j = head; j <= hvalue; j++) {
+                        if (max < arr[j]) {
+                            max = arr[j];
+                        }
+                        if (min > arr[j]) {
+                            min = arr[j];
+                        }
+                    }
+                    previous = max;
+
+
+                }
+                if ((max == hvalue) && (min == head)) {
+                    if (head == 0) {
+                        head++;
+                    }
+                    head = max + head;
+                    num++;
+                    // break;
+                }
+
+
+            }
+        }
+        return num;
+    }
+
+
+
+
+
+
+
+
+
+
+//
+
+    public int tail(int [] arr){
+        int tailsum=0;
+        int litter=0;
+        int tail=arr.length;
+        while(tail>0){
+            tail--;
+            if(arr[tail]==tail) {
+                tailsum++;
+            }
+            else{
+                int min=99,max=-1;
+
+                int tvalue=arr[tail];
+                int previous=tvalue;
+                while(!((tail==max)&&(tvalue==min))) {
+//                    tvalue = arr[min];
+
+                   // tvalue=previous;
+                    if(tvalue!=previous) { tvalue=previous;}
+
+
+                    for (int i = tvalue; i <= tail; i++) {
+                        if (max < arr[i]) {
+                            max = arr[i];
+                        }
+                        if (min > arr[i]) {
+                            min = arr[i];
+                        }
+                    }
+                    if(((tail==max)&&(tvalue==min))) {
+                        tail=min;
+                        break;
+                    }
+
+
+                    if(min==0){
+                        return (tailsum+1);
+                    }
+                    previous=min;
+                }
+
+
+                    tailsum++;
+               // litter=min;
+
+                int tdiff=max-min;
+                if(tdiff==arr.length-1){
+                    return (tailsum);
+                }
+                //System.out.println(min);
+
+               // tail=litter;
+               // return tailsum;
+            }
+
+        }
+        return tailsum;
+
+        }
+
+        public int run(int [] arr){
+        int ans=0;
+        int max=0;
+        for(int i=0;i<arr.length;i++){
+            max=Math.max(max,arr[i]);
+            if(max==i) {
+                ans++;
+            }
+        }
+        return ans;
+        }
+
+
+
+
+
+
+       // return num;
+
+
+
+
+
+}
