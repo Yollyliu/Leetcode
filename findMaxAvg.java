@@ -1,3 +1,14 @@
+//Try to find out all the possible conditions before you do it.
+
+
+
+
+
+
+
+
+
+
 package array;
 
 import java.lang.reflect.Array;
