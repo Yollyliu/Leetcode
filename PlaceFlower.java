@@ -19,7 +19,25 @@
 
 
 
+//However, the best way to solve the problem is greedy method, you should consider global condition which has "same character".
+//The common character is this: " if i a 0, my previous is 0, and my next is 0, then it can be inserted flowers. And make that
+// be 1.
 
+
+public boolean flowered(int []nums, int n){
+
+        for(int i=0;i<nums.length && n>0;i++) {
+            if (nums[i] == 0) {
+                int next = (i == nums.length - 1 ? 0 : nums[i + 1]);
+                int pre = (i == 0 ? 0 : nums[i - 1]);
+                if (next == 0 && pre == 0) {
+                    nums[i] = 1;
+                    n--;
+                }
+            }
+        }
+        return n<=0;
+    }
 
 
 
