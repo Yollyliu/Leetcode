@@ -1,0 +1,21 @@
+public int pairHashMap(int [] nums, int k){
+        if(nums.length==0 || nums==null || k<0) {return 0;}
+
+        HashMap<Integer,Integer> hashMap=new HashMap <Integer, Integer>();
+        for(int i: nums){
+            hashMap.put(i,hashMap.getOrDefault(i,0)+1);
+        }
+        int ans=0;
+
+        for(Map.Entry<Integer,Integer> entry: hashMap.entrySet()){
+            if(k==0){
+                if(entry.getValue()>=2){ ans++;}
+            }
+            else{
+                if(hashMap.containsKey(entry.getKey()+k)){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
