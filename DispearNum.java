@@ -40,12 +40,6 @@
 
 
 
-
-
-
-
-
-
 package array;
 
 import java.util.LinkedList;
