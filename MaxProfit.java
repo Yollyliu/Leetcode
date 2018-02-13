@@ -1,3 +1,16 @@
+// Say you have an array for which the ith element is the price of a given stock on day i.
+
+//Q1: you are allowed to do as many operators as you want, but you should just keep in one item.
+
+// If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), 
+//design an algorithm to find the maximum profit.
+
+
+
+// Two ways for Q1 and seven for Q2.
+
+
+
 package array;
 
 import java.util.Arrays;
