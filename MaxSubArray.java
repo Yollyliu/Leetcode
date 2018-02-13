@@ -1,3 +1,17 @@
+// Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
+
+// For example, given the array [-2,1,-3,4,-1,2,1,-5,4],
+// the contiguous subarray [4,-1,2,1] has the largest sum = 6.
+
+
+
+//So similar to the oneActionMaxprofit. But the biggest difference is initialize, in maxprofit, if sum<0, then you can let sum
+//sum=0; however, in this, if sum<0, you should let sum=nums[i], no matter positve or negative nums[i] is. 
+
+
+
+
+
 package array;
 
 import java.util.Scanner;
